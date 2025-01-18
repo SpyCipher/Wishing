@@ -45,7 +45,7 @@ class Particles {
     this.audioContext = new (window.AudioContext || window.AudioContext)();
     this.soundBuffer = null;
 
-    const soundUrl = './public/sound/explosionSound.mp3';
+    const soundUrl = './sound/explosionSound.mp3';
     fetch(soundUrl)
       .then(response => response.arrayBuffer())
       .then(arrayBuffer => this.audioContext.decodeAudioData(arrayBuffer))
@@ -195,7 +195,7 @@ function init() {
   particles = new Particles(scene);
 
   // Load background sound
-  backgroundSound = new Audio('./public/sound/backgroundSound.mp3');
+  backgroundSound = new Audio('./sound/backgroundSound.mp3');
   backgroundSound.loop = true; 
   backgroundSound.volume = 0.6; 
 
@@ -227,7 +227,7 @@ function addDirectionalLights() {
 
 function addText() {
   const fontLoader = new FontLoader();
-  fontLoader.load('./public/fonts/Roboto.json', (font) => {
+  fontLoader.load('./fonts/Roboto.json', (font) => {
     const textMaterial = new THREE.MeshStandardMaterial({ color: 0xE4B1F0, metalness: 0.7, roughness: 0.4 });
 
     let lines = [
@@ -293,7 +293,7 @@ function addText() {
 
 function createFloor() {
     const textureLoader = new THREE.TextureLoader();
-    const tileTexture = textureLoader.load('./public/textures/tileTexture.jpg'); 
+    const tileTexture = textureLoader.load('./textures/tileTexture.jpg'); 
 
     tileTexture.wrapS = tileTexture.wrapT = THREE.RepeatWrapping;
     tileTexture.repeat.set(6, 6); // Adjust the number of tiles
@@ -314,7 +314,7 @@ function createFloor() {
 
 function addTable() {
   const loader = new GLTFLoader();
-  loader.load('./public/models/Table.glb', (gltf) => {
+  loader.load('./models/Table.glb', (gltf) => {
     const model = gltf.scene;
     model.position.set(0, -10, 30); 
     model.scale.set(15, 12, 15); 
@@ -325,7 +325,7 @@ function addTable() {
 
 function addCake() {
   const loader = new GLTFLoader();
-  loader.load('./public/models/cakeBirthday.glb', (gltf) => {
+  loader.load('./models/cakeBirthday.glb', (gltf) => {
     const cake = gltf.scene;
     cake.position.set(0, -4, 30); 
     cake.scale.set(12, 12, 12); 
@@ -358,17 +358,17 @@ function createStages() {
 
   // Stage 1: Image Slideshow (5 images)
   const stage1Images = [
-    './public/images/1.jpeg',
-    './public/images/2.jpeg',
-    './public/images/3.jpeg'
+    './images/1.jpeg',
+    './images/2.jpeg',
+    './images/3.jpeg'
   ];
   setupSlideshow(stage1Images, -50, 10, 10);
 
   // Stage 2: Image Slideshow (5 images)
   const stage2Images = [
-    './public/images/3.jpeg',
-    './public/images/1.jpeg',
-    './public/images/2.jpeg'
+    './images/3.jpeg',
+    './images/1.jpeg',
+    './images/2.jpeg'
   ];
   setupSlideshow(stage2Images, 50, 10, 10);
 
